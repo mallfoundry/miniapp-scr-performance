@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    container
+</div>
+
+<script>
+    function stopWatch() {
+        return new Promise(resolve => {
+            const start = Date.now();
+            document.querySelector(".container").getBoundingClientRect()
+            const end = Date.now();
+            resolve(end - start)
+        })
+    }
+
+    function queryCounts() {
+        return Promise.all(Array.from(Array(100)).map(stopWatch))
+    }
+
+    queryCounts().then(console.log)
+</script>
+</body>
+</html>
